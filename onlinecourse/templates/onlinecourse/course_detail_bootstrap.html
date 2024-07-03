@@ -33,9 +33,9 @@
                                         {% for choice in question.choice_set.all %}
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" name="choice_{{choice.IDENTIFIER}}"
-                                                    class="form-check-input" id="{{choice.IDENTIFIER}}"
-                                                    value="{{choice.IDENTIFIER}}">{{ choice.content }}
+                                                <input type="checkbox" name="choice_{{choice.id}}"
+                                                    class="form-check-input" id="{{choice.id}}"
+                                                    value="{{choice.id}}">{{ choice.content }}
                                             </label>
                                         </div>
                                         {% endfor %}
@@ -44,14 +44,14 @@
                             {% endfor %}
                             <input class="btn btn-success btn-block" type="submit" value="Submit">
                         </form>
-                </div>
+                    </div>
                     
                 {% endif %}
                 <li>
                     <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
                     <a class="btn btn-link" href="{% url 'onlinecourse:logout' %}">Logout</a>
                 </li>
-                {% else %}
+                
                 <li>
                     <form class="form-inline" action="{% url 'onlinecourse:login' %}" method="post">
                         {% csrf_token %}
@@ -63,7 +63,6 @@
                         </div>
                     </form>
                 </li>
-                {% endif %}
             </ul>
         </div>
     </nav>
